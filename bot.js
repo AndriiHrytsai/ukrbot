@@ -8,9 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.listen(3000, () => {
-    console.log('App listen 3000');
-})
+// app.listen(3000, () => {
+//     console.log('App listen 3000');
+// })
 
 const { Telegraf } = require("telegraf");
 require("dotenv").config();
