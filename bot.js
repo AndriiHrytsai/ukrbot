@@ -17,12 +17,12 @@ require("dotenv").config();
 let bot = new Telegraf('5465064074:AAGeykMj0AAKRwYOByBrhSqMiVPSFpRZtKw');
 
 
-app.post('/send/message', (req, res) => {
-    const message = req.body.message;
-
-    bot.telegram.sendMessage(525377065, message).then();
-    res.json('OK');
-})
+// app.post('/send/message', (req, res) => {
+//     const message = req.body.message;
+//
+//     bot.telegram.sendMessage(525377065, message).then();
+//     res.json('OK');
+// })
 
 bot.start((ctx) => {
         // const allUsers = getAllUsers();
