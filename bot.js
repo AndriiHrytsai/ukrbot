@@ -14,7 +14,7 @@ app.listen(3000, () => {
 
 const { Telegraf } = require("telegraf");
 require("dotenv").config();
-let bot = new Telegraf(process.env.TELEGRAM_TOKEN_EDU);
+let bot = new Telegraf('5465064074:AAGeykMj0AAKRwYOByBrhSqMiVPSFpRZtKw');
 
 
 function getAllUsers() {
