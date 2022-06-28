@@ -17,19 +17,10 @@ require("dotenv").config();
 let bot = new Telegraf('5465064074:AAGeykMj0AAKRwYOByBrhSqMiVPSFpRZtKw');
 
 
-function getAllUsers() {
-    const pathFile = path.join(__dirname, 'peoples.json');
-    const data = fs.readFileSync(pathFile);
-    return JSON.parse(data.toString());
-}
-
 app.post('/send/message', (req, res) => {
     const message = req.body.message;
-    const userIds = getAllUsers();
 
-    userIds.users.forEach((value) => {
-        bot.telegram.sendMessage(value, message).then();
-    })
+    bot.telegram.sendMessage(525377065, message).then();
     res.json('OK');
 })
 
@@ -48,16 +39,8 @@ bot.start((ctx) => {
         )
     }
 );
-bot.help((ctx) => ctx.reply("Справка в процессе"));
 
-bot.command("whoami", (ctx) => {
-    const { id, username, first_name, last_name } = ctx.from;
-     ctx.reply(`Кто ты в телеграмме:
-*id* : ${id}
-*username* : ${username}
-*Имя* : ${first_name}
-*Фамилия* : ${last_name}
-*chatId* : ${ctx.chat.id}`);
+
+bot.launch().then((err) => {
+    console.log(err);
 });
-
-bot.launch();
