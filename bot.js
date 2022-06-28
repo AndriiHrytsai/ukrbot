@@ -34,12 +34,12 @@ app.post('/send/message', (req, res) => {
 })
 
 bot.start((ctx) => {
-        const allUsers = getAllUsers();
-        const arr = { users: [...allUsers.users] };
-        if (!arr.users.includes(ctx.from.id)) {
-            arr.users.push(ctx.from.id);
-        }
-        fs.writeFile(path.join(__dirname, 'peoples.json'), JSON.stringify(arr), ((err) => err && console.log(err)));
+        // const allUsers = getAllUsers();
+        // const arr = { users: [...allUsers.users] };
+        // if (!arr.users.includes(ctx.from.id)) {
+        //     arr.users.push(ctx.from.id);
+        // }
+        // fs.writeFile(path.join(__dirname, 'peoples.json'), JSON.stringify(arr), ((err) => err && console.log(err)));
 
         ctx.reply(
             `Доброго дня, ${
@@ -48,5 +48,16 @@ bot.start((ctx) => {
         )
     }
 );
+bot.help((ctx) => ctx.reply("Справка в процессе"));
+
+bot.command("whoami", (ctx) => {
+    const { id, username, first_name, last_name } = ctx.from;
+     ctx.reply(`Кто ты в телеграмме:
+*id* : ${id}
+*username* : ${username}
+*Имя* : ${first_name}
+*Фамилия* : ${last_name}
+*chatId* : ${ctx.chat.id}`);
+});
 
 bot.launch();
